@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Superuser {
+  id         Int      @id @default(autoincrement())
+  user_name  String   @unique
+  staff_name String?
+  password   String
+  user_role  String
+  branch     String
+  createdAt  DateTime? @default(now())
+  updatedAt  DateTime?
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  user_name  String   @unique
+  staff_name String?
+  password   String
+  user_role  String
+  branch     String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model ItemType {
+  id Int @id @default(autoincrement())
+}
