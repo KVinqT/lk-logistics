@@ -14,7 +14,7 @@ export async function POST(req: Request, res: Response) {
       },
     });
     if (isAccessible) {
-      return Response.json(isAccessible, { status: 200 });
+      return Response.json({ isAccessible }, { status: 200 });
     } else {
       return Response.json({ status: 403 });
     }

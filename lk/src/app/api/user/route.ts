@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 
 export async function GET(req: Request, res: Response) {
   const allUsers = await prisma.user.findMany();
-  return Response.json(allUsers);
+  return Response.json({ allUsers });
 }
 
 export async function POST(req: Request, res: Response) {

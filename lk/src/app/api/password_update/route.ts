@@ -26,6 +26,6 @@ export async function PUT(req: Request, res: Response) {
         password: confirmedPassword,
       },
     });
-    return Response.json(changedPasswordSuperuser, { status: 200 });
+    return Response.json({ changedPasswordSuperuser }, { status: 200 });
   }
 }

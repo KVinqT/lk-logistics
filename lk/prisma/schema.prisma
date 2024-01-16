@@ -29,6 +29,62 @@ model User {
   updatedAt  DateTime @updatedAt
 }
 
-model ItemType {
+model Item_type {
   id Int @id @default(autoincrement())
+  type String @unique
+  pricing Pricing?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Exchange_rate {
+  id Int @id @default(autoincrement())
+  date String
+  rate String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Transportation_charges {
+  id Int @id @default(autoincrement())
+  transportation_type String @unique
+  branch String
+  qty String
+  rate String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Other_charges {
+  id Int @id @default(autoincrement())
+  charges_type String @unique
+  qty String
+  rate String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Pricing {
+  id Int @id @default(autoincrement())
+  item_type Item_type? @relation(fields: [item_type_id],references: [id])
+  item_type_id Int? @unique
+  qty String
+  price String
+  created_date String 
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Customer {
+  id Int @id @default(autoincrement()) 
+  name String
+  type String
+  nrc_no String @unique
+  phone_1 String @unique
+  phone_2 String? @unique
+  address String 
+  business_name String?
+  payment_type String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
